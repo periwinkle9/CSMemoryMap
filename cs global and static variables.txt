@@ -1,0 +1,942 @@
+Cave Story (freeware, unmodded*) memory address list
+
+* Popular CS editors may relocate the stage table or other things, so this list may not be fully
+accurate to the memory layout of modded games
+
+
+         Size
+Address (bytes)  Data Type               Description
+------------------------------------------------------------------------------------------------------------------
+48F000                                   Start of .data segment (some _cinit/_doexit stuff here)
+48F040      4    int                     x position (in pixels) of "Lv" text in the HUD (other aspects
+                                         of the weapon HUD are drawn at offsets of this)
+            4    (alignment?)
+48F044   2024    BULLETTABLE[46]         Bullet table:
+48F044     44    BULLETTABLE             Bullet 0 (null) info:
+48F044      1    signed char               Damage
+48F045      1    signed char               Number of hits
+            2    (struct padding)
+48F048      4    int                       Number of frames to live
+48F04C      4    int                       Properties ("flags"/"bits")
+48F050      4    int                       Horizontal hitbox size for enemies (pixels)
+48F054      4    int                       Vertical hitbox size for enemies (pixels)
+48F058      4    int                       Horizontal hitbox size for blocks/invulnerable NPCs (pixels)
+48F05C      4    int                       Vertical hitbox size for blocks/invulnerable NPCs (pixels)
+48F060     16    RANGE                     Sprite offsets (pixels):
+48F060      4    int                         front
+48F064      4    int                         top
+48F068      4    int                         back
+48F06C      4    int                         bottom (unused)
+                                           (end of RANGE)
+                                         (end of BULLETTABLE)
+48F070     44    BULLETTABLE             Bullet 1 (L1 Snake) info
+48F09C     44    BULLETTABLE             Bullet 2 (L2 Snake) info
+48F0C8     44    BULLETTABLE             Bullet 3 (L3 Snake) info
+48F0F4     44    BULLETTABLE             Bullet 4 (L1 Polar Star) info
+48F120     44    BULLETTABLE             Bullet 5 (L2 Polar Star) info
+48F14C     44    BULLETTABLE             Bullet 6 (L3 Polar Star) info
+48F178     44    BULLETTABLE             Bullet 7 (L1 Fireball) info
+48F1A4     44    BULLETTABLE             Bullet 8 (L2 Fireball) info
+48F1D0     44    BULLETTABLE             Bullet 9 (L3 Fireball) info
+48F1FC     44    BULLETTABLE             Bullet 10 (L1 Machine Gun) info
+48F228     44    BULLETTABLE             Bullet 11 (L2 Machine Gun) info
+48F254     44    BULLETTABLE             Bullet 12 (L3 Machine Gun) info
+48F280     44    BULLETTABLE             Bullet 13 (L1 Missile) info
+48F2AC     44    BULLETTABLE             Bullet 14 (L2 Missile) info
+48F2D8     44    BULLETTABLE             Bullet 15 (L3 Missile) info
+48F304     44    BULLETTABLE             Bullet 16 (L1 Missile explosion) info
+48F330     44    BULLETTABLE             Bullet 17 (L2 Missile explosion) info
+48F35C     44    BULLETTABLE             Bullet 18 (L3 Missile explosion) info
+48F388     44    BULLETTABLE             Bullet 19 (L1 Bubbler) info
+48F3B4     44    BULLETTABLE             Bullet 20 (L2 Bubbler) info
+48F3E0     44    BULLETTABLE             Bullet 21 (L3 Bubbler bubble) info
+48F40C     44    BULLETTABLE             Bullet 22 (L3 Bubbler thorn) info
+48F438     44    BULLETTABLE             Bullet 23 (L3 Blade slash) info
+48F464     44    BULLETTABLE             Bullet 24 (127 damage falling spike) info
+48F490     44    BULLETTABLE             Bullet 25 (L1 Blade) info
+48F4BC     44    BULLETTABLE             Bullet 26 (L2 Blade) info
+48F4E8     44    BULLETTABLE             Bullet 27 (L3 Blade) info
+48F514     44    BULLETTABLE             Bullet 28 (L1 Super Missile) info
+48F540     44    BULLETTABLE             Bullet 29 (L2 Super Missile) info
+48F56C     44    BULLETTABLE             Bullet 30 (L3 Super Missile) info
+48F598     44    BULLETTABLE             Bullet 31 (L1 Super Missile explosion) info
+48F5C4     44    BULLETTABLE             Bullet 32 (L2 Super Missile explosion) info
+48F5F0     44    BULLETTABLE             Bullet 33 (L3 Super Missile explosion) info
+48F61C     44    BULLETTABLE             Bullet 34 (L1 Nemesis) info
+48F648     44    BULLETTABLE             Bullet 35 (L2 Nemesis) info
+48F674     44    BULLETTABLE             Bullet 36 (L3 Nemesis) info
+48F6A0     44    BULLETTABLE             Bullet 37 (L2 Spur head) info
+48F6CC     44    BULLETTABLE             Bullet 38 (L3 Spur head) info
+48F6F8     44    BULLETTABLE             Bullet 39 (L3 MAX Spur head) info
+48F724     44    BULLETTABLE             Bullet 40 (L2 Spur tail) info
+48F750     44    BULLETTABLE             Bullet 41 (L3 Spur tail) info
+48F77C     44    BULLETTABLE             Bullet 42 (L3 MAX Spur tail) info
+48F7A8     44    BULLETTABLE             Bullet 43 (Curly's Nemesis) info
+48F7D4     44    BULLETTABLE             Bullet 44 (Screen nuke) info
+48F800     44    BULLETTABLE             Bullet 45 (Whimsical Star) info
+            4    (alignment?)
+48F830    144    CARETTABLE[18]          Caret (effects) table:
+48F830      8    CARETTABLE              Caret 0 (nothing) info:
+48F830      4    int                       Sprite left offset (units)
+48F834      4    int                       Sprite top offset (units)
+                                         (end of CARETTABLE)
+48F838      8    CARETTABLE              Caret 1 (bubble) info
+48F840      8    CARETTABLE              Caret 2 (projectile dissipation) info
+48F848      8    CARETTABLE              Caret 3 (shoot effect) info
+48F850      8    CARETTABLE              Caret 4 (Snake afterimage?) info
+48F858      8    CARETTABLE              Caret 5 ("Zzz") info
+48F860      8    CARETTABLE              Caret 6 (nonexistent) info
+48F868      8    CARETTABLE              Caret 7 (Booster exhaust) info
+48F870      8    CARETTABLE              Caret 8 (Drowned Quote) info
+48F878      8    CARETTABLE              Caret 9 ("?" that appears when you interact) info
+48F880      8    CARETTABLE              Caret 10 ("Level Up!") info
+48F888      8    CARETTABLE              Caret 11 (red hurt particles) info
+48F890      8    CARETTABLE              Caret 12 (missile explosion flash) info
+48F898      8    CARETTABLE              Caret 13 (Quote ceiling bonk particles) info
+48F8A0      8    CARETTABLE              Caret 14 (broken/unused) info
+48F8A8      8    CARETTABLE              Caret 15 (Bubbler projectile dissipation) info
+48F8B0      8    CARETTABLE              Caret 16 ("Empty!") info
+48F8B8      8    CARETTABLE              Caret 17 ("PUSH JUMP KEY!", unused) info
+48F8C0     72    void(*[18])(CARET*)     Table of function pointers to caret behavior functions
+48F908      4    char*                   Pointer to Config.dat header string ("DOUKUTSU20041206")
+48F90C      4    char*                   Pointer to Config.dat file name ("Config.dat")
+48F910      4    char*                   Pointer to version format string (shown in Version dialog)
+48F914      4    int                     Window magnification (1x or 2x)
+48F918      4    char*                   Pointer to credit script name ("credit.tsc")
+48F91C     16    RECT                    Game cliprect
+48F92C     16    RECT                    Full window rect
+48F93C      4    char*                   Pointer to PBM copyright string ("(C)Pixel")
+        (TODO fill in actual descriptions below, I don't know anything about how this stuff works)
+48F940  15568    PIXTONEPARAMETER[139]   Pixtone object stuff:
+48F940    112    PIXTONEPARAMETER        Pixtone thing 0:
+48F940      4    int                       use
+48F944      4    int                       size
+48F948     24    PIXOSCILLATOR             oMain:
+48F948      4    int                         model
+            4    (struct padding)
+48F950      8    double                      num
+48F958      4    int                         top
+48F95C      4    int                         offset
+                                           (end of PIXOSCILLATOR)
+48F960     24    PIXOSCILLATOR             oPitch
+48F978     24    PIXOSCILLATOR             oVolume
+48F990      4    int                       initial
+48F994      4    int                       pointAx
+48F998      4    int                       pointAy
+48F99C      4    int                       pointBx
+48F9A0      4    int                       pointBy
+48F9A4      4    int                       pointCx
+48F9A8      4    int                       pointCy
+            4    (struct padding)
+                                         (end of PIXTONEPARAMETER)
+48F9B0    112    PIXTONEPARAMETER        Pixtone thing 1
+48FA20    112    PIXTONEPARAMETER        Pixtone thing 2
+                                 .
+                                 .
+                                 .
+4935A0    112    PIXTONEPARAMETER        Pixtone thing 138
+        (TODO fill in actual descriptions above, I don't know anything about how this stuff works)
+493610      4    int                     Key mapped to jump (see 49E210 for a list of keycodes)
+493614      4    int                     Key mapped to shoot
+493618      4    int                     Key mapped to weapon swap right
+49361C      4    int                     Key mapped to weapon swap left
+493620      4    int                     Key mapped to inventory
+493624      4    int                     Key mapped to Map System
+493628      4    int                     Key mapped to OK
+49362C      4    int                     Key mapped to Cancel
+493630      4    int                     Key mapped to left
+493634      4    int                     Key mapped to up
+493638      4    int                     Key mapped to right
+49363C      4    int                     Key mapped to down
+493640      4    char*                   Pointer to window name string ("洞窟物語" in Shift-JIS)
+493644      4    BOOL                    Initially TRUE, set to FALSE after recording the initial
+                                         system time for the FPS counter if it is enabled
+493648      4    char*                   Pointer to mutex name (to enforce single-instance) ("Doukutsu")
+49364C      4    char*                   Pointer to PXM header string ("PXM")
+493650     16    RECT                    Rect used when drawing map name
+493660    168    ARMSLEVELTABLE[14]      Weapon exp leveling table:
+493660     12    ARMSLEVELTABLE          Weapon 0 (null) level table:
+493660     12    int[3]                    Array of exp needed for L2, L3, and max (respectively)
+                                         (end of ARMSLEVELTABLE)
+49366C     12    ARMSLEVELTABLE          Weapon 1 (Snake) level table
+493678     12    ARMSLEVELTABLE          Weapon 2 (Polar Star) level table
+493684     12    ARMSLEVELTABLE          Weapon 3 (Fireball) level table
+493690     12    ARMSLEVELTABLE          Weapon 4 (Machine Gun) level table
+49369C     12    ARMSLEVELTABLE          Weapon 5 (Missile Launcher) level table
+4936A8     12    ARMSLEVELTABLE          Weapon 6 (nothing) level table
+4936B4     12    ARMSLEVELTABLE          Weapon 7 (Bubbler) level table
+4936C0     12    ARMSLEVELTABLE          Weapon 8 (nothing) level table
+4936CC     12    ARMSLEVELTABLE          Weapon 9 (Blade) level table
+4936D8     12    ARMSLEVELTABLE          Weapon 10 (Super Missile Launcher) level table
+4936E4     12    ARMSLEVELTABLE          Weapon 11 (nothing) level table
+4936F0     12    ARMSLEVELTABLE          Weapon 12 (Nemesis) level table
+4936FC     12    ARMSLEVELTABLE          Weapon 13 (Spur) level table
+        (TODO Organya stuff below that I don't really understand)
+493708     48    OCTWAVE[8]              oct_wave array:
+493708      6    OCTWAVE                 element 0:
+493708      2    short                     wave_size
+49370A      2    short                     oct_par
+49370C      2    short                     oct_size
+                                         (end of OCTWAVE)
+49370E      6    OCTWAVE                 element 1
+493714      6    OCTWAVE                 element 2
+                                 .
+                                 .
+                                 .
+493732      6    OCTWAVE                 element 7
+493738     18    WAVEFORMATEX            format_tbl2
+            2    (alignment?)
+49374C     24    short[12]               freq_tbl
+493764     26    short[13]               pan_tbl
+            2    (alignment?)
+493780     16    unsigned char[16]       old_key
+493790      7    char[7]                 "Org-01"
+            1    (alignment)
+493798      7    char[7]                 "Org-02"
+            1    (alignment)
+4937A0      4    UINT                    Timer resolution
+4937A4      4    int                     Volume
+        (TODO Organya stuff above that I don't really understand)
+4937A8      4    char*                   Pointer to default profile name string ("Profile.dat")
+4937AC      4    char*                   Pointer to profile header string ("Do041220")
+4937B0  19000    TRANSMAPTABLE[95]       Stage table: 
+4937B0    200    TRANSMAPTABLE           Stage 0 info:
+4937B0     32    char[32]                  Tileset
+4937D0     32    char[32]                  Internal map name (file name without extension)
+4937F0      4    int                       Background type
+4937F4     32    char[32]                  Background name
+493814     32    char[32]                  NPC sprite sheet 1
+493834     32    char[32]                  NPC sprite sheet 2
+493854      1    signed char               Boss number
+493855     32    char[32]                  Map name (in game)
+            3    (struct padding)
+                                         (end TRANSMAPTABLE)
+493878    200    TRANSMAPTABLE           Stage 1 info
+493940    200    TRANSMAPTABLE           Stage 2 info
+                                 .
+                                 .
+                                 .
+498120    200    TRANSMAPTABLE           Stage 94 info
+4981E8    168    char*[42]               Music table, each entry is a pointer to the song name string
+498290     16    RECT                    Textbox line rect
+4982A0    336    RECT[21]                Gaudi sprite rects (left-facing)
+4983F0    336    RECT[21]                Gaudi sprite rects (right-facing)
+498540      4    char*                   Pointer to PXE header string ("PXE")
+            4    (alignment?)
+498548   1444    void(*[361])(NPCHAR*)   Table of function pointers to NPC behavior functions
+498AEC     40    void(*[10])()           Table of function pointers to map boss behavior functions
+           12    (alignment?)
+498B20      4    DWORD                   Security cookie used for buffer overrun checks
+           20    (???)                   (There's something here but I'm not sure what)
+
+
+498B50 - 499B3F                          Stuff used by other library functions and such
+
+
+499B40    128    ITEMDATA[32]            Inventory items array:
+499B40      4    ITEMDATA                Item slot 0 info:
+499B40      4    int                       ID (0 = no item)
+                                         (end of ITEMDATA)
+499B44      4    ITEMDATA                Item slot 1 info
+499B48      4    ITEMDATA                Item slot 2 info
+                                 .
+                                 .
+                                 .
+499BBC      4    ITEMDATA                Item slot 31 info
+499BC0      4    BOOL (int)              If FALSE (0), the inventory cursor is in the items section,
+                                         otherwise it is in the arms section
+499BC4      4    int                     y position of the "--ARMS--" text in the inventory.
+                                         (The "--ITEM--" text is drawn at this y value plus 52.)
+                                         When opening the inventory, this value is set to 24, and
+                                         decreases by 1 every frame until 16.
+499BC8    160    ARMSDATA[8]             Inventory weapons array:
+499BC8     20    ARMSDATA                Weapon slot 0 info:
+499BC8      4    int                       ID (0 = no weapon)
+499BCC      4    int                       Level
+499BD0      4    int                       Exp
+499BD4      4    int                       Max ammo (0 = infinite)
+499BD8      4    int                       Current ammo
+                                         (end of ARMSDATA)
+499BDC     20    ARMSDATA                Weapon slot 1 info
+499BF0     20    ARMSDATA                Weapon slot 2 info
+                                 .
+                                 .
+                                 .
+499C54     20    ARMSDATA                Weapon slot 7 info
+499C68      4    int                     Currently selected weapon index
+499C6C      4    int                     Currently selected item index
+499C70      4    unsigned int            Controls the flickering of the inventory cursor.
+                                         Incremented by 1 every frame in the inventory.
+499C74     28    BACKDATA                Background info:
+499C74      4    BOOL                      Set to TRUE (1) when the background is loaded, otherwise unused
+499C78      4    int                       Background width
+499C7C      4    int                       Background height
+499C80      4    int                       Unused?
+499C84      4    int                       Unused?
+499C88      4    int                       Background type
+499C8C      4    int                       Controls the scrolling effect for background types 5, 6, and 7
+                                         (end of BACKDATA)
+499C90      4    int                     Water level. Set to y = 240 (tiles) but NPC 191 can change this
+499C94      4    COLORREF                Set to a near-black color when loading a BG, but otherwise unused
+499C98   8192    BULLET[64]              Bullet array:
+499C98    128    BULLET                  Bullet slot 0 info:
+499C98      4    int                       Collision flags
+499C9C      4    int                       Bullet type
+499CA0      4    int                       Properties ("flags"/"bits"), set from bullet table
+499CA4      4    int                       Alive state (bit 0x80 = alive)
+499CA8      4    int                       x position (units)
+499CAC      4    int                       y position (units)
+499CB0      4    int                       x velocity (units/frame)
+499CB4      4    int                       y velocity (units/frame)
+499CB8      4    int                       Center x position for bullets that oscillate around an x coord
+                                           (vertically-shot Level 3 Missiles and Super Missiles)
+499CBC      4    int                       Center y position for bullets that oscillate around a y coord
+                                           (horizontally-shot Level 3 Missiles and Super Missiles)
+499CC0      4    int                       State/"Action number" (think ANP but for bullets)
+499CC4      4    int                       Wait timer (used to time various bullet behaviors)
+499CC8      4    int                       Animation timer
+499CCC      4    int                       Animation number (controls which bullet sprite is drawn)
+                                           The Missile/Super Missile code instead uses this to determine
+                                           acceleration.
+499CD0      1    unsigned char             Direction
+            3    (struct padding)
+499CD4     16    RECT                      Sprite rect:
+499CD4      4    LONG                        x coordinate of left side
+499CD8      4    LONG                        y coordinate of top side
+499CDC      4    LONG                        x coordinate of right side
+499CE0      4    LONG                        y coordinate of bottom side
+                                           (end of RECT)
+499CE4      4    int                       Counter, used to time how long the bullet has to live
+499CE8      4    int                       Timer used by Missiles and Super Missiles to control the rate
+                                           of exhaust particles coming out
+499CEC      4    int                       Life (frames to live)
+499CF0      4    int                       Damage, set from bullet table
+499CF4      4    int                       Number of hits remaining
+499CF8      4    int                       Horizontal hitbox size for enemies (in units)
+499CFC      4    int                       Vertical hitbox size for enemies (in units)
+499D00      4    int                       Horizontal hitbox size for map blocks/invulnerable enemies
+499D04      4    int                       Vertical hitbox size for map blocks/invulnerable enemies
+499D08     16    RANGE                     Sprite offset, set from bullet table:
+499D08      4    int                         front
+499D0C      4    int                         top
+499D10      4    int                         back
+499D14      4    int                         bottom (unused)
+                                           (end of RANGE)
+                                         (end of BULLET)
+499D18    128    BULLET                  Bullet slot 1 info
+499D98    128    BULLET                  Bullet slot 2 info
+                                 .
+                                 .
+                                 .
+49BC18    128    BULLET                  Bullet slot 63 info
+49BC98      4    unsigned int            Controls the initial direction that a Level 2/3 Snake starts at.
+                                         Increments once for every new L2/3 Snake bullet.
+                                         Even = next bullet goes down (if shot horizontally) or left
+                                         (if shot vertically), odd = next bullet goes up/right
+49BC9C      4    unsigned int            Controls the acceleration of the next Level 3 Missile bullet.
+                                         Increments for every new L3 Missile bullet.
+                                         0 mod 3 = next bullet has 64 units/frame^2 acceleration,
+                                         1 mod 3 = 51 units/frame^2, 2 mod 3 = 128 units/frame^2.
+49BCA0      4    unsigned int            Controls acceleration for the next Level 3 Super Missile bullet.
+                                         Increments for every new L3 Super Missile bullet.
+                                         0 mod 3 = next bullet has 256 units/frame^2 acceleration,
+                                         1 mod 3 = 170 units/frame^2, 2 mod 3 = 512 units/frame^2.
+            4    (alignment?)
+49BCA8   4352    CARET[64]               Caret (effects) array:
+49BCA8     68    CARET                   Caret slot 0 info:
+49BCA8      4    int                       Alive state (bit 0x80 = alive)
+49BCAC      4    int                       Type
+49BCB0      4    int                       Direction
+49BCB4      4    int                       x position (units)
+49BCB8      4    int                       y position (units)
+49BCBC      4    int                       x velocity (units/frame)
+49BCC0      4    int                       y velocity (units/frame)
+49BCC4      4    int                       State/"Action number". Some carets use this to run certain code
+                                           only on the first frame after they spawn.
+49BCC8      4    int                       Wait timer (unused?)
+49BCCC      4    int                       Animation number (controls which sprite is drawn)
+49BCD0      4    int                       Animation timer
+49BCD4      4    int                       Sprite left offset
+49BCD8      4    int                       Sprite top offset
+49BCDC     16    RECT                      Sprite rect:
+49BCDC      4    LONG                        x coordinate of left side
+49BCE0      4    LONG                        y coordinate of top side
+49BCE4      4    LONG                        x coordinate of right side
+49BCE8      4    LONG                        y coordinate of bottom side
+                                           (end of RECT)
+                                         (end of CARET)
+49BCEC     68    CARET                   Caret slot 1 info
+49BD30     68    CARET                   Caret slot 2 info
+                                 .
+                                 .
+                                 .
+49CD64     68    CARET                   Caret slot 63 info
+49CDA8      4    int                     y coordinate of the top of the client area of the game window
+49CDAC      4    int                     x coordinate of the left side of the client area
+49CDB0     16    RECT                    Backbuffer rect
+49CDC0      4    BOOL                    Whether the game is fullscreen
+49CDC4      4    LPDIRECTDRAWCLIPPER     Pointer to a DirectDrawClipper object
+49CDC8   1440    SurfaceMetadata[40]     (Not the original struct name) Metadata array for each surface:
+49CDC8     36    SurfaceMetadata         Metadata for surface 0:
+49CDC8     20    char[20]                  Name
+49CDDC      4    unsigned int              Width
+49CDE0      4    unsigned int              Height
+49CDE4      4    int                       Surface type (from resource, file, or neither)
+49CDE8      4    BOOL                      "Do not regenerate" flag?
+                                         (end of metadata struct)
+49CDEC     36    SurfaceMetadata         Metadata for surface 1
+49CE10     36    SurfaceMetadata         Metadata for surface 2
+                                 .
+                                 .
+                                 .
+49D344     36    SurfaceMetadata         Metadata for surface 39
+49D368      4    HFONT                   Handle to the font object used by the game
+            8    (unused?)
+49D374      4    int                     Window width (320) times the current magnification
+49D378      4    int                     Window height (240) times the current magnification
+49D37C      4    LPDIRECTDRAW            Pointer to the game's DirectDraw instance
+49D380      4    LPDIRECTDRAWSURFACE     Frontbuffer pointer
+49D384      4    LPDIRECTDRAWSURFACE     Backbuffer pointer
+49D388    160    LPDIRECTDRAWSURFACE[40] Array of pointers to each of the DirectDraw surfaces
+49D428     16    RECT                    Rect that the frontbuffer calls Blt onto
+49D438      4    DWORD                   System time (in ms) of the previous frame.
+                                         To maintain an average 50 FPS, the game waits until the
+                                         current time reaches this value + 20ms, after which the next
+                                         frame is drawn and this value is increased by 20.
+49D43C      4    DWORD                   Current system time. A frame will be drawn when this value is
+                                         greater than or equal to the previous address + 20.
+        (TODO explain all of the stuff below, I have no idea how this stuff works)
+49D440     16    RECT                    (rcSet RECT in BackupSurface())
+49D450    100    DDBLTFX                 (DDBLTFX struct in BackupSurface())
+49D4B4     16    RECT                    (rcSet RECT in PutBitmap3())
+49D4C4     16    RECT                    (rcWork RECT in PutBitmap3())
+49D4D4     16    RECT                    (rcSet RECT in PutBitmap4())
+49D4E4     16    RECT                    (rcWork RECT in PutBitmap4())
+49D4F4     16    RECT                    (rcSet RECT in Surface2Surface())
+49D504     16    RECT                    (rcWork RECT in Surface2Surface())
+49D514     16    RECT                    (rcSet RECT in CortBox())
+            4    (alignment?)
+49D528    100    DDBLTFX                 (DDBLTFX struct in CortBox())
+49D58C     16    RECT                    (rcSet RECT in CortBox2())
+            4    (alignment?)
+49D5A0    100    DDBLTFX                 (DDBLTFX struct in CortBox2())
+        (TODO explain all of the stuff above, I have no idea how this stuff works)
+            4    (unused?)
+49D608      8    ILLUST                  Credit illustration struct:
+49D608      4    int                       State/"Action number" (off screen to the left, sliding in
+                                            from the left, sliding out to the right)
+49D60C      4    int                       x position (units)
+                                         (end of ILLUST)
+49D610     24    CREDITSCRIPT            Credit.tsc parser struct:
+49D610      4    int                       File size of script
+49D614      4    char*                     Pointer to buffer containing the script
+49D618      4    int                       Current read position in the script
+49D61C      4    int                       Wait timer for "-" command
+49D620      4    int                       Script mode (stop, scroll, wait)
+49D624      4    int                       x position of cast (in units), set with "+" command
+                                         (end of CREDITSCRIPT)
+49D628   1280    STRIPPER[16]            Credits cast list:
+49D628     80    STRIPPER                Cast entry 0:
+49D628      4    int                       Active state (bit 0x80 = active)
+49D62C      4    int                       x position (units)
+49D630      4    int                       y position (units)
+49D634      4    int                       Cast ID (image to be displayed)
+49D638     64    char[64]                  Text to be displayed
+                                         (end of STRIPPER)
+49D678     80    STRIPPER                Cast entry 1
+49D6C8     80    STRIPPER                Cast entry 2
+                                 .
+                                 .
+                                 .
+49DAD8     80    STRIPPER                Cast entry 15
+49DB28      4    DWORD                   Fade mask color
+            4    (alignment?)
+49DB30    616    FADEPARAMETER           Fade info:
+49DB30      4    int                       Mode (1 = fade-in, 2 = fade-out)
+49DB34      4    BOOL                      If non-zero, the entire screen is masked (fully faded out)
+49DB38      4    int                       Fade animation timer
+49DB3C    300    signed char[15][20]       Fade sprite at each x, y coordinate
+49DC68    300    signed char[15][20]       For each x, y coordinate, whether the fade has begun on that
+                                           part of the screen
+49DD94      1    signed char               Direction (0 = left, 1 = up, 2 = right, 3 = down, 4 = center)
+            3    (struct padding)
+                                         (end of FADEPARAMETER)
+49DD98      8    unsigned char[8]        Skipflag array. Each skipflag is 1 bit, so each byte contains 8
+                                         skipflags (e.g., 49DD98 is skipflags 0-7, 49DD99 is 8-15, etc.)
+49DDA0   1000    unsigned char[1000]     NPC flag array. Each flag is 1 bit, for a total of 8000 flags
+49E188     60    FLASH                   Screen flash info:
+49E188      4    int                       Mode (1 = explosion, 2 = flash)
+49E18C      4    int                       State/"Action number": For explosions, 0 = expand, 1 = shrink
+                                           Unused for the screen flash mode
+49E190      4    BOOL                      Active status (set to TRUE while a flash is happening)
+49E194      4    int                       Flash timer (of sorts)
+49E198      4    int                       Width
+49E19C      4    int                       x position (units)
+49E1A0      4    int                       y position (units)
+49E1A4     16    RECT                      For explosions, screen bounds for the vertical rectangle
+                                           (set to 0 for regular flashes)
+49E1B4     16    RECT                      For explosions, screen bounds for the horizontal rectangle
+                                           For regular flashes, the bounds for the flash rectangle
+                                           (which covers the whole screen)
+                                         (end of FLASH)
+49E1C4      4    DWORD                   Flash color
+49E1C8     28    FRAME                   Camera info:
+49E1C8      4    int                       x coordinate of left side of screen (units)
+49E1CC      4    int                       y coordinate of top of screen (units)
+49E1D0      4    int*                      Pointer to x position of camera focus target
+                                           (player's xpos if <FOM, entity's xpos if <FON, etc.)
+49E1D4      4    int*                      Pointer to y position of camera focus target
+49E1D8      4    int                       Focus speed (last argument of <FOM/N/B, higher = slower)
+49E1DC      4    int                       Quake timer (small quake)
+49E1E0      4    int                       Quake timer (large quake)
+                                         (end of FRAME)
+49E1E4      4    BOOL                    TRUE (1) if "Load" is selected on the title screen,
+                                         FALSE (0) if "New" is selected
+49E1E8      4    int                     Game state flags:
+                                         0x1 - run game physics (<PRI unsets this)
+                                         0x2 - player has control
+                                         0x4 - currently running TSC event
+                                         0x8 - currently running credits
+49E1EC      4    int                     Frame counter. Increments every frame during the opening
+                                         cutscene and in the main game loop (so not in the inventory,
+                                         minimap display, escape menu, or teleporter select screen),
+                                         but resets to 0 when starting a new game. Saved and loaded
+                                         with Profile.dat but is otherwise completely unused
+        (TODO the stuff below could be documented better)
+49E1F0      4    LPDIRECTINPUTA          Pointer to DirectInput instance
+49E1F4      4    LPDIRECTINPUTDEVICE2A   Pointer to joystick DirectInputDevice instance
+49E1F8      4    int                     Joystick neutral x position
+49E1FC      4    int                     Joystick neutral y position
+49E200      4    LPDIRECTINPUTDEVICE2A   Another DirectInputDevice pointer for the joystick
+                                         (This is the one in EnumDevices_Callback())
+49E204      4    LPDIRECTINPUTDEVICEA    (Device instance created in EnumDevices_Callback())
+49E208      4    DirectInputPair*        ("directinput_objects" pointer in EnumDevices_Callback()):
+                                         The struct being pointed to contains an LPDIRECTINPUTA and
+                                         LPDIRECTINPUTDEVICE2A pointer
+49E20C      4    int                     Initially 0, set to 1 the first time EnumDevices_Callback()
+                                         is called
+        (TODO the stuff above could be documented better)
+49E210      4    int                     Player's key presses:
+                                         0x1: Left
+                                         0x2: Right
+                                         0x4: Up
+                                         0x8: Down
+                                         0x10: W
+                                         0x20: X
+                                         0x40: Z
+                                         0x80: S
+                                         0x100: A
+                                         0x200: Shift
+                                         0x400: F1
+                                         0x800: F2
+                                         0x1000: Q
+                                         0x8000: Escape
+                                         0x10000: Comma (alternate left button)
+                                         0x20000: Period (alternate down button)
+                                         0x40000: "/" key on US keyboards (alternate right button)
+                                         0x80000: L
+                                         0x100000: "+" key
+49E214      4    int                     Player's new button presses (keys held this frame but not held
+                                         in the previous frame)
+49E218      4    int                     Player's key presses last frame (used to compute 49E214)
+            4    (alignment?)
+49E220    260    char[260]               Data folder path (module path + "\data")
+            4    (alignment?)
+49E328    260    char[260]               Module path (absolute path to the game exe's folder)
+49E42C     32    int[8]                  Joystick button mapping table
+49E44C      4    HINSTANCE               Handle to the game process instance (first param of WinMain)
+49E450      4    int                     Window width
+49E454      4    int                     Window height
+49E458      4    HWND                    Handle to the game window
+49E45C      4    BOOL                    TRUE if "Use gamepad" is enabled
+49E460      4    BOOL                    TRUE if config is set to a fullscreen mode
+49E464      4    BOOL                    TRUE if the FPS counter is enabled ("fps" file exists)
+49E468      4    BOOL                    TRUE if the game window is active (in focus)
+49E46C      4    DWORD                   If FPS counter is enabled, stores the number of frames in the
+                                         previous second (value displayed in the game)
+49E470      4    DWORD                   If FPS counter is enabled, stores the number of frames so far
+                                         in the current second (reset to 0 at the end of the second)
+49E474      4    DWORD                   If FPS counter is enabled, stores the system time at the
+                                         previous second
+49E478      4    HANDLE                  Handle to the game's mutex (used to enforce single-instance)
+49E47C      4    HANDLE                  On startup, the game checks whether it's already running by
+                                         attempting to open its mutex and store it in this variable.
+                                         If it succeeds, the game immediately closes this handle and
+                                         exits. So, if you can see the game then you will see NULL here.
+49E480    268    MAPDATA                 Map data info:
+49E480      4    unsigned char*            Pointer to malloc'd map data (.pxm) buffer
+49E484    257    unsigned char[257]        Map attribute (.pxa) table
+            1    (struct padding)
+49E586      2    short                     Width (Height)
+49E588      2    short                     Length
+            2    (struct padding)
+                                         (end of MAPDATA)
+49E58C      1    unsigned char           Timer used to animate wind tiles, incremented by 2 every frame
+            3    (alignment)
+49E590     40    MapName                 Map name (<MNA) info:
+49E590      4    BOOL                      Active status (TRUE if map name currently being displayed)
+49E594      4    int                       Wait timer-after 160 frames the active status is set to FALSE
+49E598     32    char[32]                  Text (map name) to be displayed
+                                         (end of MapName)
+49E5B8    128    signed char[128]        Map flags (set with <MP+). Each map flag is 1 byte (1 or 0)
+49E638    180    MYCHAR                  Player info:
+49E638      1    unsigned char             Player state:
+                                           0x1  - interacting
+                                           0x2  - hidden (<HMC)
+                                           0x4  - walking (set when walking along the ground, cleared
+                                                 when on the ground and not holding left or right)
+                                           0x20 - disables friction when set
+                                           0x80 - alive 
+            3    (struct padding)
+49E63C      4    unsigned int              Collision flags
+49E640      4    int                       Direction (0 = left, 2 = right)
+49E644      4    BOOL                      TRUE when looking up
+49E648      4    BOOL                      TRUE when looking down (in the air)
+49E64C      4    int                       <UNI setting (0 = normal, 1 = zero-gravity physics)
+49E650      4    int                       Equip flags
+49E654      4    int                       x position (units)
+49E658      4    int                       y position (units)
+49E65C      4    int                       Target x position for camera ([49E654] + [49E664])
+49E660      4    int                       Target y position for camera ([49E658] + [49E668])
+49E664      4    int                       x offset (units) from player for camera focus
+49E668      4    int                       y offset (units) from player for camera focus
+49E66C      4    int                       x velocity (units/frame)
+49E670      4    int                       y velocity (units/frame)
+49E674      4    int                       Animation timer
+49E678      4    int                       Animation number (sprite number)
+49E67C     16    RANGE                     Hitbox (for map tiles and solid NPCs):
+49E67C      4    int                         front (only used in NPC 282)
+49E680      4    int                         top
+49E684      4    int                         back
+49E688      4    int                         bottom
+                                           (end of RANGE)
+49E68C     16    RANGE                     Sprite offsets
+49E69C     16    RECT                      Sprite rect
+49E6AC     16    RECT                      Weapon sprite rect
+49E6BC      4    int                       (unused?)
+49E6C0      4    int                       Timer controlling the length of the flashing weapon exp bar
+                                           when you grab exp
+49E6C4      4    int                       Tallies the amount of exp picked up for the purposes of the
+                                           "+(number)" graphic
+49E6C8      1    unsigned char             Invincibility timer
+49E6C9      1    unsigned char             (unused?)
+49E6CA      1    unsigned char             Autofire timer for autofire weapons (Machine Gun, Bubbler)
+49E6CB      1    unsigned char             Underwater bubble animation timer (increments every frame)
+49E6CC      2    short                     HP
+49E6CE      2    short                     Number of Whimsical Stars
+49E6D0      2    short                     Max HP
+49E6D2      2    short                     (unused)
+49E6D4      4    int                       Yellow HP bar visible when taking damage
+49E6D8      4    int                       Animation timer for yellow HP bar
+49E6DC      4    int                       Air (1000 is full air, decreases by 1 every frame in water)
+49E6E0      4    int                       Timer for displaying air level after exiting water
+49E6E4      1    signed char               If 0, water will splash when Quote enters water
+49E6E5      1    signed char               Set to 1 when pushing down to create the "?" effect
+49E6E6      1    signed char               Booster state:
+                                           0 - not boosting
+                                           1 - Booster v0.8, Booster v2.0 left or right
+                                           2 - Booster v2.0 up
+                                           3 - Booster v2.0 down
+            1    (struct padding)
+49E6E8      4    int                       Booster fuel
+                                         (end of MYCHAR)
+49E6EC      4    int                     Current noise sound:
+                                         1 - Waterway stream sound (<SSS)
+                                         2 - Helicopter sound (<SPS)
+                                         0 or anything else - none
+                                         (note, changing this value directly doesn't immediately change
+                                         the current noise. It should change after making the window
+                                         inactive and then active again, though.)
+49E6F0      4    unsigned int            Noise volume (argument to <SSS/<SPS). Caveats above apply
+49E6F4      4    int                     Nikumaru/290 Counter time, in frames (divide by 50 for seconds)
+49E6F8      1    unsigned char           Controls the flashing of the exp bar when you grab exp.
+                                         Increments by 1 for every frame of the flashing
+                                         (49E6C0 controls the duration of the flashing)
+            7    (alignment?)
+        (TODO Organya stuff below that I don't really understand)
+49E700  25600    signed char[100][256]   Organya waveform data
+4A4B00      4    long                    Organya play position
+            4    (alignment?)
+4A4B08     64    NOTELIST*[16]           Note list
+4A4B48    512    LPDIRECTSOUNDBUFFER[8][8][2]     lpORGANBUFFER
+4A4D48     64    BOOL[16]                For each track, whether it is muted (from the debug Mute menu)
+4A4D88     16    unsigned char[16]       key_on
+4A4D98     16    unsigned char[16]       key_twin
+4A4DA8      4    UINT                    TimerID (receives return value of timeSetEvent)
+4A4DAC      4    BOOL                    TRUE if timer is initialized
+4A4DB0     32    long[8]                 now_leng
+4A4DD0     64    int[16]                 Track volumes
+4A4E10      4    BOOL                    TRUE if fading out (<FMU)
+            4    (alignment?)
+4A4E18    228    ORGDATA                 orgdata:
+4A4E18    208    MUSICINFO                 info:
+4A4E18      2    unsigned short              wait
+4A4E1A      1    unsigned char               line
+4A4E1B      1    unsigned char               dot
+4A4E1C      2    unsigned short              alloc_note
+            2    (struct padding)
+4A4E20      4    long                        repeat_x
+4A4E24      4    long                        end_x
+4A4E28    192    TRACKDATA[16]               tdata:
+4A4E28     12    TRACKDATA                   Track 0 data:
+4A4E28      2    unsigned short                freq
+4A4E2A      1    unsigned char                 wave_no
+4A4E2B      1    signed char                   pipi
+4A4E2C      4    NOTELIST*                     note_p
+4A4E30      4    NOTELIST*                     note_list
+                                             (end TRACKDATA)
+4A4E34     12    TRACKDATA                   Track 1 data
+4A4E40     12    TRACKDATA                   Track 2 data
+                                 .
+                                 .
+                                 .
+4A4EDC     12    TRACKDATA                   Track 15 data
+                                           (end MUSICINFO)
+4A4EE8      1    char                      track
+4A4EE9     16    char[16]                  mute
+4A4EF9      1    unsigned char             def_pan
+4A4EFA      1    unsigned char             def_volume
+            1    (struct padding)
+                                         (end ORGDATA)
+4A4EFC      4    (alignment?)
+        (TODO Organya stuff above that I don't really understand)
+4A4F00   1536    signed char[6][256]     Pixtone wave model table
+4A5500     64    PERMITSTAGE[8]          Teleporter locations info:
+4A5500      8    PERMITSTAGE             Teleporter slot 0:
+4A5500      4    int                       Index (first argument to <PS+)
+4A5504      4    int                       Event number (second argument to <PS+)
+                                         (end PERMITSTAGE)
+4A5508      8    PERMITSTAGE             Teleporter slot 1
+4A5510      8    PERMITSTAGE             Teleporter slot 2
+                                 .
+                                 .
+                                 .
+4A5538      8    PERMITSTAGE             Teleporter slot 7
+4A5540      4    int                     y position (pixels) of "- WARP -" text in teleporter menu
+                                         (starts at 54, decrements by 1 every frame until 46)
+4A5544      4    int                     Currently selected teleport slot
+4A5548      4    unsigned int            Controls flashing of teleporter menu cursor
+                                         (increments by 1 every frame in the teleporter menu)
+4A554C      4    int                     Timer for "Empty!" caret (set to 50 when you try to shoot with
+                                         no ammo, decrements by 1 every frame until 0. While it's
+                                         non-zero, the "Empty!" caret will not appear again)
+4A5550      4    int                     Spur charge. Not to be confused with the amount of exp on the
+                                         gun—this is a separate variable that increments (without bound)
+                                         every frame you're holding the fire button with the Spur.
+                                         The Spur laser fires when you release the fire button while
+                                         this value is non-zero and the gun is not at Level 1.
+                                         Resets to 0 when switching weapons with the weapon swap buttons
+4A5554      4    int                     Timer controlling the rate of Machine Gun ammo regeneration
+4A5558      4    int                     Timer controlling the rate of Bubbler L1 ammo regeneration
+4A555C      4    int                     Timer controlling the rate of Bubbler L2/3 ammo regeneration
+4A5560      4    BOOL                    TRUE if Spur is at max charge (plays the sound effect when
+                                         initially set to TRUE)
+4A5564      4    int                     Global fire rate limiter. While non-zero, the player cannot
+                                         shoot any weapons. Decrements by 1 every frame, and if 0 is set
+                                         to 4 when the player presses the fire button
+4A5568    640    LPDIRECTSOUNDBUFFER[160] Sound effect buffers
+4A57E8      4    LPDIRECTSOUND           DirectSound object
+4A57EC      4    LPDIRECTSOUNDBUFFER     Primary(?) sound buffer
+4A57F0      4    int                     Current map/stage number
+4A57F4      4    int                     Currently playing music ID
+4A57F8      4    int                     Saved previous music position (for <RMU)
+4A57FC      4    int                     Saved previous music ID (for <RMU)
+4A5800    204    CARET[3]                Whimsical Stars info:
+4A5800     68    CARET                   Star 0 info (see 49BCA8 for a list of fields)
+4A5844     68    CARET                   Star 1 info
+4A5888     68    CARET                   Star 2 info
+4A58CC      4    int                     Controls which Whimsical Star will spawn a bullet this frame
+                                         (cycles 0, 1, 2 every frame)
+4A58D0    256    char[4][64]             Textbox lines
+4A59D0    356    TEXTSCRIPT              TSC event info:
+4A59D0    260    char[260]                 Script path ("stage\[name].tsc")
+4A5AD4      4    int                       Script size (head + stage file sizes)
+4A5AD8      4    char*                     Pointer to script buffer
+                                           (dynamically allocated but fixed at 20480 bytes)
+4A5ADC      1    signed char               Operation mode:
+                                           0 - no event
+                                           1 - script parsing
+                                           2 - waiting for OK/Cancel input (<NOD)
+                                           3 - scrolling text (new line)
+                                           4 - waiting (<WAI)
+                                           5 - fade (<FAI/<FAO)
+                                           6 - Yes/No prompt (<YNJ)
+                                           7 - waiting for player to touch the ground (<WAS)
+4A5ADD      1    signed char               Text state:
+                                           0x1 - print text (<MSG/<MS2/<MS3)
+                                           0x2 - draw message box (<MS2 unsets this)
+                                           0x10 - display text instantly (<TUR/<CAT/<SAT)
+                                           0x20 - message box is at top of screen
+                                           0x40 - <CAT/<SAT (prevents 0x10 from being cleared by <MSG)
+            2    (struct padding)
+4A5AE0      4    int                       Current script read position
+4A5AE4      4    int                       Current textbox x position in the line
+4A5AE8      4    int                       Current textbox line
+4A5AEC     16    int[4]                    Textbox line y positions
+4A5AFC      4    int                       Wait timer
+4A5B00      4    int                       <WAI wait length
+4A5B04      4    int                       Event number to jump to when selecting "No" in a <YNJ
+4A5B08      1    signed char               Current yes/no selection (0 = Yes, 1 = No)
+            3    (struct padding)
+4A5B0C      4    int                       Face number (<FAC)
+4A5B10      4    int                       Face x position (units)
+4A5B14      4    int                       Item graphic ID (<GIT)
+4A5B18      4    int                       Item graphic y position (pixels)
+4A5B1C     16    RECT                      Textbox rect
+4A5B2C      4    int                       Text line y offset (always 0?)
+4A5B30      1    unsigned char             Timer for <NOD cursor blinking
+            3    (struct padding)        (end of TEXTSCRIPT)
+4A5B34     16    int[4]                  Storage for numbers to be printed as text.
+                                         <NUMxxxx prints the number stored at index xxxx (0-3 are valid)
+                                         (Note: values outside of 0-9999 will not display correctly)
+                                         Index 0 is set by <AM+ to be the amount of ammo added
+                                         Index 1 is set by <AM+ to a (possibly uninitialized) value:
+                                         If <AM+ appears right after one of these commands, then
+                                         <NUM0001 prints the argument value from that command:
+                                         - <ML+, <IT-, <EQ+ <EQ- <AM-, <TAM (3rd argument), <UNI,
+                                           <TRA (1st argument, place the <AM+ at the start of the new
+                                           map's event), <FL+, <FL-, <SK+, <SK-, <EVE (place the <AM+ at
+                                           the start of the new event), <FLJ (2nd argument),
+                                           <SKJ (2nd argument), <ITJ (2nd argument),
+                                           <AMJ (2nd argument), <UNJ (2nd argument),
+                                           <ECJ (2nd argument), <NCJ (2nd argument), <QUA, <FOM, <SOU,
+                                           <CMU, <DNP, <DNA, <BOA, <CNP (3rd argument),
+                                           <ANP (3rd argument), <INP (3rd argument),
+                                           <SNP (4th argument), <MNP (4th argument),
+                                           <CMP (3rd argument), <BSL, <MYD, <MYB, <FAC, <NUM, <SIL.
+                                         Index 2 and 3 are unused (nothing writes to them).
+            4    (alignment?)
+4A5B48   1024    int[256]                Sine table: index i is floor(512*sin((i/256)*2pi radians))
+4A5F48     66    short[33]               Tangent table: index i is floor(8192*tan((i/256)*2pi radians))
+            6    (alignment?)
+4A5F90      4    int                     Index of next slot in the ValueView array to overwrite in the
+                                         case that all slots are occupied
+            4    (alignment?)
+4A5F98    640    VALUEVIEW[16]           ValueView (damage/xp numbers shown above NPCs/player) table:
+4A5F98     40    VALUEVIEW               ValueView slot 0 info:
+4A5F98      4    BOOL                      Active status
+4A5F9C      4    int*                      Pointer to x position of object to draw ValueView over
+4A5FA0      4    int*                      Pointer to y position of object to draw ValueView over
+4A5FA4      4    int                       y offset (units)
+4A5FA8      4    int                       Value (number to be shown)
+4A5FAC      4    int                       Animation timer
+4A5FB0     16    int                       Rect to draw at
+                                         (end of VALUEVIEW)
+4A5FC0     40    VALUEVIEW               ValueView slot 1 info
+4A5FE8     40    VALUEVIEW               ValueView slot 2 info
+                                 .
+                                 .
+                                 .
+4A61F0     40    VALUEVIEW               ValueView slot 15 info
+4A6218      4    int                     Controls flashing of Ballos 3 eye (NPC 342) when damaged
+            4    (alignment?)
+4A6220  88064    NPCHAR[512]             NPC table:
+4A6220    172    NPCHAR                  NPC slot 0 info:
+4A6220      1    unsigned char             Active state:
+                                           0 - empty
+                                           0x8 - dying (explodes and creates drops on the next frame)
+                                           0x10 - for map bosses with multiple parts, damage the main
+                                                  body when shot instead of this individual part
+                                           0x80 - alive
+            3    (struct padding)
+4A6224      4    int                       Collision flags
+4A6228      4    int                       x position (units)
+4A622C      4    int                       y position (units)
+4A6230      4    int                       x velocity (units/frame)
+4A6234      4    int                       y velocity (units/frame)
+4A6238      4    int                       Secondary x velocity (used by NPCs 45, 269, 308, 309, 353)
+4A623C      4    int                       Secondary y velocity
+4A6240      4    int                       "Target x position": often used by NPCs that oscillate around
+                                           a position, but could also just be a general-purpose variable
+4A6244      4    int                       "Target y position" (see above)
+4A6248      4    int                       NPC type
+4A624C      4    int                       NPC flag number
+4A6250      4    int                       NPC event number
+4A6254      4    int                       Surface ID
+4A6258      4    int                       Sound effect to play when damaged
+4A625C      4    int                       Sound effect to play when killed
+4A6260      4    int                       Current HP
+4A6264      4    int                       Amount of exp to drop when killed
+4A6268      4    int                       Size (0-3, determines amount of smoke generated when killed
+                                           as well as the map tile collision detection area if size=3)
+4A626C      4    int                       Facing direction
+4A6270      2    unsigned short            Properties ("flags"/"bits") (see editor for a list of values)
+            2    (struct padding)
+4A6274     16    RECT                      Sprite rect
+4A6284      4    int                       Animation timer
+4A6288      4    int                       Animation number (controls which sprite is drawn)
+4A628C      4    int                       General-purpose state variable
+4A6290      4    int                       General-purpose state variable
+4A6294      4    int                       State/"Action number" (set by <ANP)
+4A6298      4    int                       Wait timer
+4A629C     16    RANGE                     Hitbox size
+4A62AC     16    RANGE                     Sprite offsets
+4A62BC      1    unsigned char             "Invincibility frames" except without the invincibility
+                                           (controls the shaking of an enemy and the timing of the sound
+                                           effect that plays when damaged)
+            3    (struct padding)
+4A62C0      4    int                       Tracks damage taken for the purposes of the "-(...)" graphic
+4A62C4      4    int                       Amount of contact damage dealt to player
+4A62C8      4    NPCHAR*                   Pointer to parent NPC
+                                         (end of NPCHAR)
+4A62CC    172    NPCHAR                  NPC slot 1 info
+4A6378    172    NPCHAR                  NPC slot 2 info
+                                 .
+                                 .
+                                 .
+4AD458    172    NPCHAR                  NPC slot 170 info
+                                         (NPCs placed in the map .pxe are loaded starting from here)
+                                 .
+                                 .
+                                 .
+4B0E20    172    NPCHAR                  NPC slot 256 info
+                                         (Most new NPCs that spawn in a map start from this slot)
+                                 .
+                                 .
+                                 .
+4BB974    172    NPCHAR                  NPC slot 511 info
+4BBA20      4    int                     x position (units) of enemy that Curly AI is targeting
+4BBA24      4    int                     y position (units) of enemy that Curly AI is targeting
+4BBA28      4    int                     Shared y coordinate information. Used in the following ways:
+                                         - Core: sets to 1 during the wind phases, causes water level to
+                                           lower
+                                         - Undead Core: sets to 1 during teeth attack phase (there's no
+                                           water in the fight? Maybe there was in the original plan)
+                                         - Red Crystal: oscillates around this value. Set by Sue
+                                           (ANP 15/16, 17), Doctor, Muscle Doctor to move the crystal
+                                         - Muscle Doctor: moves to this coordinate upon spawning
+                                           (set by Doctor)
+                                         - Puu Black: the bubbles oscillate around this y position
+                                           (set by Puu Black)
+4BBA2C      4    int                     Wait timer for Curly AI. Set by enemies that she can target;
+                                         once expired, Curly will go back to following the player
+4BBA30      4    int                     Shared x coordinate information. Used in tandem with 4BBA28,
+                                         except Core, Undead Core, and water level NPC don't use this.
+                                         Also:
+                                         - Possessed Sue sets this to 10 after taking 50 damage
+                                         - Possessed Misery checks for this being nonzero as part of
+                                           deciding when to spawn critters/bats, then when she does
+                                           spawn them, sets this value back to 0
+4BBA34      4    NPCTABLE*               Pointer to NPC table (npc.tbl values, dynamically allocated)
+4BBA38      1    unsigned char           Controls the flashing of the Core when damaged
+4BBA39      1    unsigned char           Controls the flashing of the Undead Core when damaged
+            2    (alignment?)
+4BBA3C      4    int                     Saves the Undead Core's HP for damage cap calculation purposes
+4BBA40      1    unsigned char           Controls the flashing of Ballos (phase 2/4) when damaged
+4BBA41      1    unsigned char           Controls the flashing of Ironhead when damaged
+            2    (alignment?)
+4BBA44     20    BOSSLIFE                Boss HP bar info:
+4BBA44      4    BOOL                      TRUE if the boss HP bar is currently active
+4BBA48      4    int*                      Pointer to boss's HP variable
+4BBA4C      4    int                       Boss's max HP
+4BBA50      4    int                       Current value of yellow HP bar (visible when damaged)
+4BBA54      4    int                       Timer controlling how long to hold the yellow HP bar in place
+                                           before having it catch back up to the boss's current HP (30f)
+                                         (end of BOSSLIFE)
+4BBA58   3440    NPCHAR[20]              Boss NPC array (see 4A6220 for a list of fields)
+4BC7C8      1    unsigned char           Controls the flashing of Heavy Press when damaged
+4BC7C9      1    unsigned char           Controls the flashing of Monster X when damaged
+            2    (alignment?)
+
+4BC7CC - 4BE048                          Start of memory used by other stuff outside of CS code
+4BE048                                   End of .data segment
