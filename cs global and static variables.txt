@@ -10,71 +10,70 @@ Address (bytes)  Data Type               Description
 48F000                                   Start of .data segment (some _cinit/_doexit stuff here)
 48F040      4    int                     x position (in pixels) of "Lv" text in the HUD (other aspects
                                          of the weapon HUD are drawn at offsets of this)
-            4    (alignment?)
-48F044   2024    BULLETTABLE[46]         Bullet table:
-48F044     44    BULLETTABLE             Bullet 0 (null) info:
-48F044      1    signed char               Damage
-48F045      1    signed char               Number of hits
+            8    (alignment?)
+48F048   2024    BULLETTABLE[46]         Bullet table:
+48F048     44    BULLETTABLE             Bullet 0 (null) info:
+48F048      1    signed char               Damage
+48F049      1    signed char               Number of hits
             2    (struct padding)
-48F048      4    int                       Number of frames to live
-48F04C      4    int                       Properties ("flags"/"bits")
-48F050      4    int                       Horizontal hitbox size for enemies (pixels)
-48F054      4    int                       Vertical hitbox size for enemies (pixels)
-48F058      4    int                       Horizontal hitbox size for blocks/invulnerable NPCs (pixels)
-48F05C      4    int                       Vertical hitbox size for blocks/invulnerable NPCs (pixels)
-48F060     16    RANGE                     Sprite offsets (pixels):
-48F060      4    int                         front
-48F064      4    int                         top
-48F068      4    int                         back
-48F06C      4    int                         bottom (unused)
+48F04C      4    int                       Number of frames to live
+48F050      4    int                       Properties ("flags"/"bits")
+48F054      4    int                       Horizontal hitbox size for enemies (pixels)
+48F058      4    int                       Vertical hitbox size for enemies (pixels)
+48F05C      4    int                       Horizontal hitbox size for blocks/invulnerable NPCs (pixels)
+48F060      4    int                       Vertical hitbox size for blocks/invulnerable NPCs (pixels)
+48F064     16    RANGE                     Sprite offsets (pixels):
+48F064      4    int                         front
+48F068      4    int                         top
+48F06C      4    int                         back
+48F070      4    int                         bottom (unused)
                                            (end of RANGE)
                                          (end of BULLETTABLE)
-48F070     44    BULLETTABLE             Bullet 1 (L1 Snake) info
-48F09C     44    BULLETTABLE             Bullet 2 (L2 Snake) info
-48F0C8     44    BULLETTABLE             Bullet 3 (L3 Snake) info
-48F0F4     44    BULLETTABLE             Bullet 4 (L1 Polar Star) info
-48F120     44    BULLETTABLE             Bullet 5 (L2 Polar Star) info
-48F14C     44    BULLETTABLE             Bullet 6 (L3 Polar Star) info
-48F178     44    BULLETTABLE             Bullet 7 (L1 Fireball) info
-48F1A4     44    BULLETTABLE             Bullet 8 (L2 Fireball) info
-48F1D0     44    BULLETTABLE             Bullet 9 (L3 Fireball) info
-48F1FC     44    BULLETTABLE             Bullet 10 (L1 Machine Gun) info
-48F228     44    BULLETTABLE             Bullet 11 (L2 Machine Gun) info
-48F254     44    BULLETTABLE             Bullet 12 (L3 Machine Gun) info
-48F280     44    BULLETTABLE             Bullet 13 (L1 Missile) info
-48F2AC     44    BULLETTABLE             Bullet 14 (L2 Missile) info
-48F2D8     44    BULLETTABLE             Bullet 15 (L3 Missile) info
-48F304     44    BULLETTABLE             Bullet 16 (L1 Missile explosion) info
-48F330     44    BULLETTABLE             Bullet 17 (L2 Missile explosion) info
-48F35C     44    BULLETTABLE             Bullet 18 (L3 Missile explosion) info
-48F388     44    BULLETTABLE             Bullet 19 (L1 Bubbler) info
-48F3B4     44    BULLETTABLE             Bullet 20 (L2 Bubbler) info
-48F3E0     44    BULLETTABLE             Bullet 21 (L3 Bubbler bubble) info
-48F40C     44    BULLETTABLE             Bullet 22 (L3 Bubbler thorn) info
-48F438     44    BULLETTABLE             Bullet 23 (L3 Blade slash) info
-48F464     44    BULLETTABLE             Bullet 24 (127 damage falling spike) info
-48F490     44    BULLETTABLE             Bullet 25 (L1 Blade) info
-48F4BC     44    BULLETTABLE             Bullet 26 (L2 Blade) info
-48F4E8     44    BULLETTABLE             Bullet 27 (L3 Blade) info
-48F514     44    BULLETTABLE             Bullet 28 (L1 Super Missile) info
-48F540     44    BULLETTABLE             Bullet 29 (L2 Super Missile) info
-48F56C     44    BULLETTABLE             Bullet 30 (L3 Super Missile) info
-48F598     44    BULLETTABLE             Bullet 31 (L1 Super Missile explosion) info
-48F5C4     44    BULLETTABLE             Bullet 32 (L2 Super Missile explosion) info
-48F5F0     44    BULLETTABLE             Bullet 33 (L3 Super Missile explosion) info
-48F61C     44    BULLETTABLE             Bullet 34 (L1 Nemesis) info
-48F648     44    BULLETTABLE             Bullet 35 (L2 Nemesis) info
-48F674     44    BULLETTABLE             Bullet 36 (L3 Nemesis) info
-48F6A0     44    BULLETTABLE             Bullet 37 (L2 Spur head) info
-48F6CC     44    BULLETTABLE             Bullet 38 (L3 Spur head) info
-48F6F8     44    BULLETTABLE             Bullet 39 (L3 MAX Spur head) info
-48F724     44    BULLETTABLE             Bullet 40 (L2 Spur tail) info
-48F750     44    BULLETTABLE             Bullet 41 (L3 Spur tail) info
-48F77C     44    BULLETTABLE             Bullet 42 (L3 MAX Spur tail) info
-48F7A8     44    BULLETTABLE             Bullet 43 (Curly's Nemesis) info
-48F7D4     44    BULLETTABLE             Bullet 44 (Screen nuke) info
-48F800     44    BULLETTABLE             Bullet 45 (Whimsical Star) info
-            4    (alignment?)
+48F074     44    BULLETTABLE             Bullet 1 (L1 Snake) info
+48F0A0     44    BULLETTABLE             Bullet 2 (L2 Snake) info
+48F0CC     44    BULLETTABLE             Bullet 3 (L3 Snake) info
+48F0F8     44    BULLETTABLE             Bullet 4 (L1 Polar Star) info
+48F124     44    BULLETTABLE             Bullet 5 (L2 Polar Star) info
+48F150     44    BULLETTABLE             Bullet 6 (L3 Polar Star) info
+48F17C     44    BULLETTABLE             Bullet 7 (L1 Fireball) info
+48F1A8     44    BULLETTABLE             Bullet 8 (L2 Fireball) info
+48F1D4     44    BULLETTABLE             Bullet 9 (L3 Fireball) info
+48F200     44    BULLETTABLE             Bullet 10 (L1 Machine Gun) info
+48F22C     44    BULLETTABLE             Bullet 11 (L2 Machine Gun) info
+48F258     44    BULLETTABLE             Bullet 12 (L3 Machine Gun) info
+48F284     44    BULLETTABLE             Bullet 13 (L1 Missile) info
+48F2B0     44    BULLETTABLE             Bullet 14 (L2 Missile) info
+48F2DC     44    BULLETTABLE             Bullet 15 (L3 Missile) info
+48F308     44    BULLETTABLE             Bullet 16 (L1 Missile explosion) info
+48F334     44    BULLETTABLE             Bullet 17 (L2 Missile explosion) info
+48F360     44    BULLETTABLE             Bullet 18 (L3 Missile explosion) info
+48F38C     44    BULLETTABLE             Bullet 19 (L1 Bubbler) info
+48F3B8     44    BULLETTABLE             Bullet 20 (L2 Bubbler) info
+48F3E4     44    BULLETTABLE             Bullet 21 (L3 Bubbler bubble) info
+48F410     44    BULLETTABLE             Bullet 22 (L3 Bubbler thorn) info
+48F43C     44    BULLETTABLE             Bullet 23 (L3 Blade slash) info
+48F468     44    BULLETTABLE             Bullet 24 (127 damage falling spike) info
+48F494     44    BULLETTABLE             Bullet 25 (L1 Blade) info
+48F4C0     44    BULLETTABLE             Bullet 26 (L2 Blade) info
+48F4EC     44    BULLETTABLE             Bullet 27 (L3 Blade) info
+48F518     44    BULLETTABLE             Bullet 28 (L1 Super Missile) info
+48F544     44    BULLETTABLE             Bullet 29 (L2 Super Missile) info
+48F570     44    BULLETTABLE             Bullet 30 (L3 Super Missile) info
+48F59C     44    BULLETTABLE             Bullet 31 (L1 Super Missile explosion) info
+48F5C8     44    BULLETTABLE             Bullet 32 (L2 Super Missile explosion) info
+48F5F4     44    BULLETTABLE             Bullet 33 (L3 Super Missile explosion) info
+48F620     44    BULLETTABLE             Bullet 34 (L1 Nemesis) info
+48F64C     44    BULLETTABLE             Bullet 35 (L2 Nemesis) info
+48F678     44    BULLETTABLE             Bullet 36 (L3 Nemesis) info
+48F6A4     44    BULLETTABLE             Bullet 37 (L2 Spur head) info
+48F6D0     44    BULLETTABLE             Bullet 38 (L3 Spur head) info
+48F6FC     44    BULLETTABLE             Bullet 39 (L3 MAX Spur head) info
+48F728     44    BULLETTABLE             Bullet 40 (L2 Spur tail) info
+48F754     44    BULLETTABLE             Bullet 41 (L3 Spur tail) info
+48F780     44    BULLETTABLE             Bullet 42 (L3 MAX Spur tail) info
+48F7AC     44    BULLETTABLE             Bullet 43 (Curly's Nemesis) info
+48F7D8     44    BULLETTABLE             Bullet 44 (Screen nuke) info
+48F804     44    BULLETTABLE             Bullet 45 (Whimsical Star) info
 48F830    144    CARETTABLE[18]          Caret (effects) table:
 48F830      8    CARETTABLE              Caret 0 (nothing) info:
 48F830      4    int                       Sprite left offset (units)
@@ -584,7 +583,7 @@ Address (bytes)  Data Type               Description
                                            0x1  - interacting
                                            0x2  - hidden (<HMC)
                                            0x4  - walking (set when walking along the ground, cleared
-                                                 when on the ground and not holding left or right)
+                                                  when on the ground and not holding left or right)
                                            0x20 - disables friction when set
                                            0x80 - alive 
             3    (struct padding)
