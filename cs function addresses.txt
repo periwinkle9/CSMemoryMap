@@ -100,6 +100,10 @@ name = "JudgeHitBulletBlock2"
 addr = 0x402B30
 
 [[func]]
+name = "Vanish"
+addr = 0x402F50
+
+[[func]]
 name = "JudgeHitBulletTriangleA"
 addr = 0x402FC0
 
@@ -763,7 +767,7 @@ name = "InitDirectInput"
 addr = 0x411EB0
 
 [[func]]
-name = "HookAllDirectInputDevices"
+name = "FindAndOpenDirectInputDevice"
 addr = 0x411EF0
 
 [[func]]
