@@ -226,10 +226,11 @@ Address (bytes)  Data Type               Description
 498AEC     40    void(*[10])()           Table of function pointers to map boss behavior functions
            12    (alignment?)
 498B20      4    DWORD                   Security cookie used for buffer overrun checks
-           20    (???)                   (There's something here but I'm not sure what)
+           12    (alignment?)
+            8    (???)                   (There's something here but I'm not sure what)
 
 
-498B50 - 499B3F                          Stuff used by other library functions and such
+498B38 - 499B3F                          Stuff used by other library functions and such
 
 
 499B40    128    ITEMDATA[32]            Inventory items array:
@@ -584,7 +585,7 @@ Address (bytes)  Data Type               Description
                                            0x2  - hidden (<HMC)
                                            0x4  - walking (set when walking along the ground, cleared
                                                   when on the ground and not holding left or right)
-                                           0x20 - disables friction when set
+                                           0x20 - disables friction when set (reset every frame)
                                            0x80 - alive 
             3    (struct padding)
 49E63C      4    unsigned int              Collision flags
@@ -897,8 +898,8 @@ Address (bytes)  Data Type               Description
 4BBA20      4    int                     x position (units) of enemy that Curly AI is targeting
 4BBA24      4    int                     y position (units) of enemy that Curly AI is targeting
 4BBA28      4    int                     Shared y coordinate information. Used in the following ways:
-                                         - Core: sets to 1 during the wind phases, causes water level to
-                                           lower
+                                         - Core: sets to 1 during the wind phases, causes water level
+                                           (controlled by NPC 191) to lower
                                          - Undead Core: sets to 1 during teeth attack phase (there's no
                                            water in the fight? Maybe there was in the original plan)
                                          - Red Crystal: oscillates around this value. Set by Sue
