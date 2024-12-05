@@ -567,8 +567,8 @@ Address (bytes)  Data Type               Description
 49E480      4    unsigned char*            Pointer to malloc'd map data (.pxm) buffer
 49E484    257    unsigned char[257]        Map attribute (.pxa) table
             1    (struct padding)
-49E586      2    short                     Width (Height)
-49E588      2    short                     Length
+49E586      2    short                     Width (length)
+49E588      2    short                     Length (height)
             2    (struct padding)
                                          (end of MAPDATA)
 49E58C      1    unsigned char           Timer used to animate wind tiles, incremented by 2 every frame
